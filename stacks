@@ -1,0 +1,84 @@
+import java.util.Scanner;
+import java.util.Stack;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Deque;
+import java.util.ArrayDeque;
+
+public class App {
+    public static void main(String[] args) {
+        System.out.println("Stacks or Queues");
+        Scanner myObj = new Scanner(System.in);
+        String userInput = myObj.nextLine();
+        System.out.println("ARRAY SIZE: ");
+        int arraySize = myObj.nextInt();
+
+        if (userInput.equalsIgnoreCase("Stacks")) {
+            Stack<Integer> stack = new Stack<>();
+            operateStack(stack, myObj);
+        } else if (userInput.equalsIgnoreCase("Queues") || userInput.equalsIgnoreCase("qus")) {
+            System.out.println("QUE or DEQUE");
+            String queueType = myObj.next();
+
+            if (queueType.equalsIgnoreCase("Que")) {
+                Queue<Integer> queue = new LinkedList<>();
+                operateQueue(queue, myObj);
+            } else if (queueType.equalsIgnoreCase("DEQ") || queueType.equalsIgnoreCase("deque")) {
+                Deque<Integer> deque = new ArrayDeque<>();
+                operateDeque(deque, myObj);
+            }
+        }
+    }
+
+    private static void operateStack(Stack<Integer> stack, Scanner myObj) {
+        String ask;
+        do {
+            System.out.println("POP or PUSH");
+            ask = myObj.next();
+
+            if (ask.equalsIgnoreCase("pop") && !stack.isEmpty()) {
+                stack.pop();
+                System.out.println("CONTINUE!!! OR PRINT!!!");
+            } else if (ask.equalsIgnoreCase("push")) {
+                int number = myObj.nextInt();
+                stack.push(number);
+                System.out.println("CONTINUE!!! OR PRINT!!!");
+            } else {
+                System.out.println("Invalid operation or stack is empty!");
+            }
+
+        } while (ask.equalsIgnoreCase("continue") && !stack.isEmpty());
+
+        System.out.println(stack);
+    }
+
+    private static void operateQueue(Queue<Integer> queue, Scanner myObj) {
+        operateCollection(queue, myObj);
+    }
+
+    private static void operateDeque(Deque<Integer> deque, Scanner myObj) {
+        operateCollection(deque, myObj);
+    }
+
+    private static void operateCollection(Queue<Integer> collection, Scanner myObj) {
+        String ask;
+        do {
+            System.out.println("ADD or REMOVE");
+            ask = myObj.next();
+
+            if (ask.equalsIgnoreCase("add")) {
+                int number = myObj.nextInt();
+                collection.add(number);
+                System.out.println("CONTINUE!!! OR PRINT!!!");
+            } else if (ask.equalsIgnoreCase("remove") && !collection.isEmpty()) {
+                collection.remove();
+                System.out.println("CONTINUE!!! OR PRINT!!!");
+            } else {
+                System.out.println("Invalid operation or collection is empty!");
+            }
+
+        } while (ask.equalsIgnoreCase("continue") && !collection.isEmpty());
+
+        System.out.println(collection);
+    }
+}
