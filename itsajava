@@ -1,0 +1,33 @@
+       // myObj.nextLine();  // Consume the newline character
+System.out.println("ARRAY SIZE: ");
+int arraySize = myObj.nextInt();
+myObj.nextLine();  // Consume the newline character
+
+Stack<Integer> stack = new Stack<>();
+String dedd = "";
+String ask = "";
+
+int number;
+
+if (loser.equalsIgnoreCase("Stacks")) {
+    System.out.println("POP or PUSH");
+    ask = myObj.nextLine();  // Read operation after consuming the newline
+}
+
+do {
+    if (ask.equalsIgnoreCase("pop")) {
+        System.out.println("Enter a number to pop:");
+        number = myObj.nextInt();
+        myObj.nextLine();  // Consume the newline character
+        stack.pop();
+        System.out.println("CONTINUE!!!! OR PRINT!!!!!!");
+        dedd = myObj.nextLine();
+    } else if (ask.equalsIgnoreCase("push")) {
+        System.out.println("Enter a number to push:");
+        number = myObj.nextInt();
+        myObj.nextLine();  // Consume the newline character
+        stack.push(number);
+        System.out.println("CONTINUE!!!! OR PRINT!!!!!!");
+        dedd = myObj.nextLine();
+    }
+} while (dedd.equalsIgnoreCase("continue"));
